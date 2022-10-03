@@ -1,0 +1,87 @@
+{
+    "name": "PlayerInput",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "764bbaa3-158e-46f7-821c-281d0b894d7b",
+            "actions": [
+                {
+                    "name": "MoveTouchPosition",
+                    "type": "PassThrough",
+                    "id": "9a419f76-cfee-44c4-a71b-13e8be452139",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveTouchPressed",
+                    "type": "Button",
+                    "id": "31e7539a-755c-468e-86c5-45bed9e03e6c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6d997e26-7311-47fa-976c-bedeb9ec76c0",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Phone",
+                    "action": "MoveTouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47bb7581-fc18-4dd8-a4cf-4a97a29de0f5",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MoveTouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0bec4136-be74-4e16-999c-6d5ef4b6a886",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "MoveTouchPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a5f64d4-31ae-44ad-8d54-2306373208e2",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Phone",
+                    "action": "MoveTouchPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": []
+        },
+        {
+            "name": "Phone",
+            "bindingGroup": "Phone",
+            "devices": []
+        }
+    ]
+}
