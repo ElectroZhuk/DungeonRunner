@@ -9,7 +9,7 @@ public class PlayButton : MonoBehaviour
     [SerializeField] [Min(0)] private float _waitBeforeStart;
     [SerializeField] private Button _button;
 
-    public UnityAction Disabled;
+    public event UnityAction Disabled;
 
     private void OnEnable()
     {

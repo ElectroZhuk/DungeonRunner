@@ -7,12 +7,15 @@ public abstract class Collectible : MonoBehaviour
 {
     public bool IsCollected { get; protected set; }
 
-    public UnityAction Collected;
+    public event UnityAction Collected;
 
     private void Awake()
     {
         IsCollected = false;
     }
 
-    public abstract void Collect();
+    public virtual void Collect()
+    {
+        Collected?.Invoke();
+    }
 }

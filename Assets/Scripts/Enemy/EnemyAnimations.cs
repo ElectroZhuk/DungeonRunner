@@ -8,8 +8,8 @@ public class EnemyAnimations : MonoBehaviour
     [SerializeField] private Enemy _enemy;
     [SerializeField] private Animator _animator;
 
-    public UnityAction EnemyAttacking;
-    public UnityAction EnemyDead;
+    public event UnityAction EnemyAttacking;
+    public event UnityAction EnemyDead;
 
     private void OnEnable()
     {

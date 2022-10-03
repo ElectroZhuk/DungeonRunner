@@ -12,7 +12,7 @@ public class Boss : MonoBehaviour
 
     public float Level => _level;
 
-    public UnityAction<int> LevelChanged;
+    public event UnityAction<int> LevelChanged;
 
     private void Start()
     {

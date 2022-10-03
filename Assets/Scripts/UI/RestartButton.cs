@@ -11,7 +11,7 @@ public class RestartButton : MonoBehaviour
     [SerializeField] private float _timeForRestart;
     [SerializeField] private Button _button;
 
-    public UnityAction Enabled;
+    public event UnityAction Enabled;
 
     private void Start()
     {

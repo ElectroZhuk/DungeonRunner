@@ -19,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController Controller => _player;
     public float StepSize => _runningSpeed * Time.fixedDeltaTime;
 
-    public UnityAction<float> Running;
-    public UnityAction<Jumper> JumpStarted;
+    public event UnityAction<float> Running;
+    public event UnityAction<Jumper> JumpStarted;
 
     private void Awake()
     {
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (hit.gameObject.TryGetComponent<StraightGround>(out StraightGround straightGround))
         {
-            MovingVector = straightGround.GetMovingVector();
+            MovingVector = straightGround.MovingVector;
         }
         else if (hit.gameObject.TryGetComponent<TurningGround>(out TurningGround turningGround))
         {
@@ -88,14 +88,16 @@ public class PlayerMovement : MonoBehaviour
         _input.Disable();
     }
 
-    public void ChangeRunningState(bool canRun)
+    public void Activate()
     {
-        _canRun = canRun;
+        _canRun = true;
+        _input.Enable();
+    }
 
-        if (_canRun == false)
-            _input.Disable();
-        else
-            _input.Enable();
+    public void Deactivate()
+    {
+        _canRun = true;
+        _input.Disable();
     }
 
     private bool NeedSideWalk()

@@ -13,8 +13,8 @@ public class Money : Collectible
         if (IsCollected == true)
             throw new UnityException("The element is already collected!");
 
+        base.Collect();
         IsCollected = true;
-        Collected?.Invoke();
         Destroy(gameObject);
     }
 }

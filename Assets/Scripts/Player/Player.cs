@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     private PlayerMoney _money;
     private PlayerBossFight _bossFight;
 
-    public UnityAction Win;
-    public UnityAction Dead;
+    public event UnityAction Win;
+    public event UnityAction Dead;
 
     private void Awake()
     {
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 
     public void Activate()
     {
-        _movement.ChangeRunningState(true);
+        _movement.Activate();
     }
 
     private void OnPlayerWin()
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
 
     private void OnDead()
     {
-        _movement.ChangeRunningState(false);
+        _movement.Deactivate();
         _fighter.ChangeCanFightState(false);
         Dead?.Invoke();
     }

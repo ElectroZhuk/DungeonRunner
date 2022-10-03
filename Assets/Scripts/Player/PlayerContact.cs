@@ -9,7 +9,7 @@ public class PlayerContact : MonoBehaviour
     private PlayerMovement _playerMovement;
     private bool _canTrapped;
 
-    public UnityAction Trapped;
+    public event UnityAction Trapped;
 
     private void Awake()
     {

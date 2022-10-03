@@ -9,9 +9,9 @@ public class PlayerLevel : MonoBehaviour
 
     public int Level => _level;
 
-    public UnityAction<int> LevelChanged;
-    public UnityAction LevelIncreased;
-    public UnityAction LevelDecreased;
+    public event UnityAction<int> LevelChanged;
+    public event UnityAction LevelIncreased;
+    public event UnityAction LevelDecreased;
 
     public void Init()
     {

@@ -9,7 +9,7 @@ public class PlayerMoney : MonoBehaviour
 
     public int CoinsAmount => _moneyAmount;
 
-    public UnityAction<int> CoinsChanged;
+    public event UnityAction<int> CoinsChanged;
 
     public void Add(Money money)
     {

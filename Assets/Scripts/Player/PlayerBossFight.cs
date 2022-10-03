@@ -10,11 +10,11 @@ public class PlayerBossFight : MonoBehaviour
     private PlayerMovement _movement;
     private BossFight _bossFight;
 
-    public UnityAction<BossFight> Entered;
-    public UnityAction Started;
-    public UnityAction Win;
-    public UnityAction Defeated;
-    public UnityAction PlayerAttacking;
+    public event UnityAction<BossFight> Entered;
+    public event UnityAction Started;
+    public event UnityAction Win;
+    public event UnityAction Defeated;
+    public event UnityAction PlayerAttacking;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class PlayerBossFight : MonoBehaviour
         {
             _bossFight = bossFight;
             Entered?.Invoke(bossFight);
-            _movement.ChangeRunningState(false);
+            _movement.Deactivate();
             bossFight.PlayerAttacking += OnPlayerAttacking;
             bossFight.PlayerVictory += OnPlayerWin;
             bossFight.PlayerDefeated += OnPlayerDefeated;

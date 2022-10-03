@@ -16,12 +16,12 @@ public class BossFight : MonoBehaviour
 
     public static BossFight Instance { get; private set; }
 
-    public UnityAction<BossFight> PlayerVictory;
-    public UnityAction<BossFight> PlayerDefeated;
-    public UnityAction PlayerAttacking;
-    public UnityAction BossAttacking;
-    public UnityAction AnimationEnded;
-    public UnityAction FightStarted;
+    public event UnityAction<BossFight> PlayerVictory;
+    public event UnityAction<BossFight> PlayerDefeated;
+    public event UnityAction PlayerAttacking;
+    public event UnityAction BossAttacking;
+    public event UnityAction AnimationEnded;
+    public event UnityAction FightStarted;
 
     private void Awake()
     {
@@ -56,12 +56,13 @@ public class BossFight : MonoBehaviour
         movingVector.y = 0;
         float step = distance / (_timeForMove / Time.fixedDeltaTime);
         float elapsedTime = 0;
+        WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
         while (elapsedTime < _timeForMove)
         {
             _playerController.Move(movingVector * step);
 
-            yield return new WaitForFixedUpdate();
+            yield return waitForFixedUpdate;
 
             elapsedTime += Time.fixedDeltaTime;
         }

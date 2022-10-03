@@ -8,7 +8,7 @@ public class Slide : MonoBehaviour
 {
     [SerializeField] private Button _changeButton;
 
-    public UnityAction Switching;
+    public event UnityAction Switching;
 
     private void OnEnable()
     {

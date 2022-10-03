@@ -17,9 +17,9 @@ public class PlayerAnimations : MonoBehaviour
 
     private Animator _animator;
 
-    public UnityAction PlayerStepped;
-    public UnityAction PlayerSwordAttack;
-    public UnityAction PlayerDead;
+    public event UnityAction PlayerStepped;
+    public event UnityAction PlayerSwordAttack;
+    public event UnityAction PlayerDead;
 
     private void Awake()
     {

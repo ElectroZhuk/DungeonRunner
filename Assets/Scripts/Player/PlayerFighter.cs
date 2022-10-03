@@ -9,8 +9,8 @@ public class PlayerFighter : MonoBehaviour
     private PlayerLevel _playerLevel;
     private bool _canFight;
 
-    public UnityAction Attacking;
-    public UnityAction Deafeated;
+    public event UnityAction Attacking;
+    public event UnityAction Deafeated;
 
     private void Awake()
     {

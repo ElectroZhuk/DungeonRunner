@@ -9,9 +9,9 @@ public class Enemy : MonoBehaviour
 
     public int Level => _level;
 
-    public UnityAction Attacking;
-    public UnityAction Dead;
-    public UnityAction<int> LevelChanged;
+    public event UnityAction Attacking;
+    public event UnityAction Dead;
+    public event UnityAction<int> LevelChanged;
 
     private void Start()
     {

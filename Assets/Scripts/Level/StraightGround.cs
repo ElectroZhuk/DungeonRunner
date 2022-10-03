@@ -9,13 +9,10 @@ public class StraightGround : MonoBehaviour
 
     private Vector3 _movingVector;
 
+    public Vector3 MovingVector => _movingVector;
+
     private void Start()
     {
         _movingVector = Vector3.Normalize(_finishPoint.position - _startPoint.position);
-    }
-
-    public Vector3 GetMovingVector()
-    {
-        return _movingVector;
     }
 }

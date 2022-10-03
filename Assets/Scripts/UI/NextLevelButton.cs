@@ -14,7 +14,7 @@ public class NextLevelButton : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private GameObject _textGameObject;
 
-    public UnityAction Enabled;
+    public event UnityAction Enabled;
 
     private int _nextSceneIndex;
 

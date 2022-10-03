@@ -18,7 +18,7 @@ public class ItemPresenter : MonoBehaviour
     private Vector3 _pressedTextPosition;
     private float _heightDeltaRatio = 0.18f;
 
-    public UnityAction<Item, ItemPresenter> ButtonClicked;
+    public event UnityAction<Item, ItemPresenter> ButtonClicked;
 
     private void OnEnable()
     {

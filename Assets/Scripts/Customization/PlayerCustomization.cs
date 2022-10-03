@@ -39,10 +39,7 @@ public class PlayerCustomization : MonoBehaviour
     {
         foreach (Avatar avatar in _customizationContainer.GetComponentsInChildren<Avatar>())
         {
-            if (avatar == selectedAvatar)
-                avatar.gameObject.SetActive(true);
-            else
-                avatar.gameObject.SetActive(false);
+            avatar.gameObject.SetActive(avatar == selectedAvatar);
         }
     }
 }
