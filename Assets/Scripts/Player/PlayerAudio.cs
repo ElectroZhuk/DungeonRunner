@@ -10,6 +10,9 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] private AudioSource _deadAudio;
 
     private float _lastStepPitch = 1;
+    private Vector2 _attackAudioPitch = new Vector2(0.9f, 1.1f);
+    private Vector2 _rightStepAudioPitch = new Vector2(1f, 1.2f);
+    private Vector2 _leftStepAudioPitch = new Vector2(0.8f, 1f);
 
     private void OnEnable()
     {
@@ -28,9 +31,9 @@ public class PlayerAudio : MonoBehaviour
     private void OnStep()
     {
         if (_lastStepPitch >= 1)
-            _stepAudio.pitch = Random.Range(1f, 1.2f);
+            _stepAudio.pitch = Random.Range(_rightStepAudioPitch.x, _rightStepAudioPitch.y);
         else
-            _stepAudio.pitch = Random.Range(0.8f, 1f);
+            _stepAudio.pitch = Random.Range(_leftStepAudioPitch.x, _leftStepAudioPitch.y);
 
         _lastStepPitch = _stepAudio.pitch;
         _stepAudio.PlayOneShot(_stepAudio.clip);
@@ -38,7 +41,7 @@ public class PlayerAudio : MonoBehaviour
 
     private void OnSwordAttack()
     {
-        _attackAudio.pitch = Random.Range(0.9f, 1.1f);
+        _attackAudio.pitch = Random.Range(_attackAudioPitch.x, _attackAudioPitch.y);
         _attackAudio.PlayOneShot(_attackAudio.clip);
     }
 

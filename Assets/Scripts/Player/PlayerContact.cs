@@ -11,6 +11,8 @@ public class PlayerContact : MonoBehaviour
 
     public event UnityAction Trapped;
 
+    private float _hitDotProductLimit = -0.1f;
+
     private void Awake()
     {
         _canTrapped = true;
@@ -29,7 +31,7 @@ public class PlayerContact : MonoBehaviour
 
         if (hit.gameObject.TryGetComponent<TrapFrontSide>(out TrapFrontSide trap))
         {
-            if (Vector3.Dot(hit.normal, _playerMovement.MovingVector) < -0.1f)
+            if (Vector3.Dot(hit.normal, _playerMovement.MovingVector) < _hitDotProductLimit)
             {
                 Trapped?.Invoke();
                 OnTrapped();

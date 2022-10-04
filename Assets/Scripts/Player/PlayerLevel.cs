@@ -13,6 +13,8 @@ public class PlayerLevel : MonoBehaviour
     public event UnityAction LevelIncreased;
     public event UnityAction LevelDecreased;
 
+    private int _minLevel = 1;
+
     public void Init()
     {
         LevelChanged?.Invoke(Level);
@@ -27,8 +29,8 @@ public class PlayerLevel : MonoBehaviour
         else
             LevelIncreased?.Invoke();
 
-        if (_level < 1)
-            _level = 1;
+        if (_level < _minLevel)
+            _level = _minLevel;
 
         LevelChanged?.Invoke(Level);
     }

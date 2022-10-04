@@ -8,6 +8,9 @@ public class EnemyAudio : MonoBehaviour
     [SerializeField] private AudioSource _attackSound;
     [SerializeField] private AudioSource _deathSound;
 
+    private float _minPitchRange = 0.9f;
+    private float _maxPitchRange = 1.1f;
+
     private void OnEnable()
     {
         _animations.EnemyAttacking += OnEnemyAttacking;
@@ -22,13 +25,13 @@ public class EnemyAudio : MonoBehaviour
 
     private void OnEnemyAttacking()
     {
-        _attackSound.pitch = Random.Range(0.9f, 1.1f);
+        _attackSound.pitch = Random.Range(_minPitchRange, _maxPitchRange);
         _attackSound.PlayOneShot(_attackSound.clip);
     }
 
     private void OnEnemyDead()
     {
-        _deathSound.pitch = Random.Range(0.9f, 1.1f);
+        _deathSound.pitch = Random.Range(_minPitchRange, _maxPitchRange);
         _deathSound.PlayOneShot(_deathSound.clip);
     }
 }

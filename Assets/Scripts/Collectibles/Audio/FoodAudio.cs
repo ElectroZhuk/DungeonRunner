@@ -8,6 +8,9 @@ public class FoodAudio : MonoBehaviour
     [SerializeField] private AudioSource _goodFoodAudio;
     [SerializeField] private AudioSource _badFoodAudio;
 
+    private float _minPitchRange = 0.9f;
+    private float _maxPitchRange = 1.1f;
+
     private void OnEnable()
     {
         _level.LevelIncreased += OnGoodFoodCollected;
@@ -22,13 +25,13 @@ public class FoodAudio : MonoBehaviour
 
     private void OnGoodFoodCollected()
     {
-        _goodFoodAudio.pitch = Random.Range(0.9f, 1.1f);
+        _goodFoodAudio.pitch = Random.Range(_minPitchRange, _maxPitchRange);
         _goodFoodAudio.PlayOneShot(_goodFoodAudio.clip);
     }
 
     private void OnBadFoodCollected()
     {
-        _badFoodAudio.pitch = Random.Range(0.9f, 1.1f);
+        _badFoodAudio.pitch = Random.Range(_minPitchRange, _maxPitchRange);
         _badFoodAudio.PlayOneShot(_badFoodAudio.clip);
     }
 }

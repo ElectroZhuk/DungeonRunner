@@ -7,6 +7,9 @@ public class MoneyAudio : MonoBehaviour
     [SerializeField] private PlayerMoney _money;
     [SerializeField] private AudioSource _collectedAudio;
 
+    private float _minPitchRange = 0.9f;
+    private float _maxPitchRange = 1.1f;
+
     private void OnEnable()
     {
         _money.CoinsChanged += OnCollected;
@@ -21,7 +24,7 @@ public class MoneyAudio : MonoBehaviour
     {
         if (amount > 0)
         {
-            _collectedAudio.pitch = Random.Range(0.9f, 1.1f);
+            _collectedAudio.pitch = Random.Range(_minPitchRange, _maxPitchRange);
             _collectedAudio.PlayOneShot(_collectedAudio.clip);
         }
     }

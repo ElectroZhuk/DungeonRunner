@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     public float StepSize => _runningSpeed * Time.fixedDeltaTime;
 
     public event UnityAction<float> Running;
-    public event UnityAction<Jumper> JumpStarted;
 
     private void Awake()
     {
@@ -68,21 +67,6 @@ public class PlayerMovement : MonoBehaviour
         transform.LookAt(transform.position + MovingVector);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (_isExternalControl == true)
-            return;
-
-        if (other.gameObject.TryGetComponent<Jumper>(out Jumper jumper))
-        {
-            _isExternalControl = true;
-            jumper.ControlEnded += ExternalControlStoped;
-            jumper.StartJump(_player);
-            JumpStarted?.Invoke(jumper);
-            return;
-        }
-    }
-
     private void OnDisable()
     {
         _input.Disable();
@@ -127,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         if (NeedSideWalk())
             sideWalkDirection = CalculateSideWalkDirection();
 
-        Vector3 motion = (MovingVector * _runningSpeed + _sidewaySpeed * transform.TransformVector(new Vector3(1, 0, 0)).normalized * sideWalkDirection) * Time.fixedDeltaTime;
+        Vector3 motion = (MovingVector * _runningSpeed + _sidewaySpeed * transform.TransformVector(Vector3.right).normalized * sideWalkDirection) * Time.fixedDeltaTime;
         _player.Move(motion);
         Running?.Invoke(motion.magnitude);
     }
@@ -139,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void SideWalk()
     {
-        _player.Move(_sidewaySpeed * transform.TransformVector(new Vector3(1, 0, 0)).normalized * _input.Player.MoveTouchPosition.ReadValue<float>() * Time.fixedDeltaTime);
+        _player.Move(_sidewaySpeed * transform.TransformVector(Vector3.right).normalized * _input.Player.MoveTouchPosition.ReadValue<float>() * Time.fixedDeltaTime);        
     }
 
     private void ExternalControlStoped(PlayerExternalControl externalControl)

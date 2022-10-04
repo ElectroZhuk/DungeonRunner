@@ -31,7 +31,6 @@ public class PlayerAnimations : MonoBehaviour
         _player.Dead += OnDead;
         _movement.Running += OnRunning;
         _fighter.Attacking += OnAttacking;
-        _movement.JumpStarted += OnJumpStarted;
         _bossFight.Win += OnPlayerWin;
         _bossFight.Defeated += OnBossWin;
         _bossFight.PlayerAttacking += OnBossFightAttacking;
@@ -43,7 +42,6 @@ public class PlayerAnimations : MonoBehaviour
         _player.Dead -= OnDead;
         _movement.Running -= OnRunning;
         _fighter.Attacking -= OnAttacking;
-        _movement.JumpStarted -= OnJumpStarted;
         _bossFight.Win -= OnPlayerWin;
         _bossFight.Defeated -= OnBossWin;
         _bossFight.PlayerAttacking -= OnBossFightAttacking;
@@ -106,12 +104,6 @@ public class PlayerAnimations : MonoBehaviour
         _animator.SetTrigger(AnimatorPlayerController.Params.Attacking);
     }
 
-    private void OnJumpStarted(Jumper jumper)
-    {
-        _animator.SetTrigger(AnimatorPlayerController.Params.JumpStart);
-        jumper.JumpProcess += ProcessJump;
-    }
-
     private void OnPlayerWin()
     {
         _animator.SetTrigger(AnimatorPlayerController.Params.Win);
@@ -120,21 +112,5 @@ public class PlayerAnimations : MonoBehaviour
     private void OnBossWin()
     {
         _animator.SetTrigger(AnimatorPlayerController.Params.Lose);
-    }
-
-    private void ProcessJump(float process, Jumper jumper)
-    {
-        _animator.SetFloat(AnimatorPlayerController.Params.JumpProcess, process);
-
-        if (process <= _jumpEnd.length * 0.95f)
-        {
-            jumper.JumpProcess -= ProcessJump;
-            OnJumpEnding(jumper);
-        }
-    }
-
-    private void OnJumpEnding(Jumper jumper)
-    {
-        _animator.SetTrigger(AnimatorPlayerController.Params.JumpEnd);
     }
 }
